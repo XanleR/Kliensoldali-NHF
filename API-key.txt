@@ -1,0 +1,10 @@
+Képnézegető
+API Key
+769df2c877d3c4cf76069274cea0a9fd
+
+Secret (??)
+9c904ea8ce948a18
+
+
+Szótár
+dict.1.1.20240502T094637Z.9a04214464a6d387.1e28363526d87b51f2905c8feb9565ea0aa4a232
