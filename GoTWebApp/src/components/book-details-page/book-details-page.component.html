@@ -1,0 +1,25 @@
+<p>book-details-page works!</p>
+
+<div *ngIf="book">
+    <h2>{{ book.name }}</h2>
+    <ul>
+      <li>ISBN: {{ book.isbn }}</li>
+      <li>Authors: {{ book.authors.join(', ') }}</li>
+      <li>Number of Pages: {{ book.numberOfPages }}</li>
+      <li>Publisher: {{ book.publisher }}</li>
+      <li>Country: {{ book.country }}</li>
+      <li>Media Type: {{ book.mediaType }}</li>
+      <li>Released: {{ book.released }}</li>
+    </ul>
+    <h3>Characters</h3>
+    <ul>
+      <li *ngFor="let character of book.characters">{{ character }}</li>
+    </ul>
+    <h3>POV Characters</h3>
+    <ul>
+      <li *ngFor="let character of book.povCharacters">{{ character }}</li>
+    </ul>
+  </div>
+  <div *ngIf="!book">
+    <p>No book details available</p>
+  </div>
