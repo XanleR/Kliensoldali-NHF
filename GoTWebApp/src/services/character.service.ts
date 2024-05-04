@@ -21,4 +21,10 @@ export class CharacterService{
     getCharacterById(characterId: string):Observable<Character>{
         return this.http.get<Character>(`${this.apiUrl}/${characterId}`);
     }
+
+    getCharacterByUrl(url: string): Observable<Character>{
+        return this.http.get<Character>(url);
+    }
+
+    
 }

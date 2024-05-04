@@ -1,1 +1,20 @@
-<p>characters-page works!</p>
+<div *ngIf="characters && characters.length > 0">
+    <h2>Characters of the Song of Ice and Fire universe</h2>
+    <ul>
+      <li *ngFor="let character of characters" (click)="goToCharactersDetailsPage(character.url)">
+        {{ character.name }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!characters || characters.length === 0">
+    <p>No character available</p>
+  </div>
+
+  <div class="pagination">
+    <button mat-icon-button (click)="previousPage()" [disabled]="currentPage === 1">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="nextPage()" [disabled]="isNextLastPage">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>

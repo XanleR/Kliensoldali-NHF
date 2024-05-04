@@ -1,5 +1,3 @@
-<p>book-details-page works!</p>
-
 <div *ngIf="book">
     <h2>{{ book.name }}</h2>
     <ul>
@@ -13,13 +11,18 @@
     </ul>
     <h3>Characters</h3>
     <ul>
-      <li *ngFor="let character of book.characters">{{ character }}</li>
+      <ng-container *ngFor="let characterUrl of book.characters">
+        <li *ngIf="characters[characterUrl]">{{ characters[characterUrl].name }}</li>
+      </ng-container>
     </ul>
     <h3>POV Characters</h3>
     <ul>
-      <li *ngFor="let character of book.povCharacters">{{ character }}</li>
+      <ng-container *ngFor="let characterUrl of book.povCharacters">
+        <li *ngIf="characters[characterUrl]">{{ characters[characterUrl].name }}</li>
+      </ng-container>
     </ul>
   </div>
   <div *ngIf="!book">
     <p>No book details available</p>
   </div>
+  

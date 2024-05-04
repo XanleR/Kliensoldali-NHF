@@ -12,6 +12,8 @@ import { BookService } from "../services/book.service";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { MatIconModule } from '@angular/material/icon';
 import { BookDetailsPageComponent } from "../components/book-details-page/book-details-page.component";
+import { CharacterService } from "../services/character.service";
+import { CharacterDetailsPageComponent } from "../components/character-details-page/character-details-page.component";
 
 @NgModule({
     imports:[
@@ -21,11 +23,16 @@ import { BookDetailsPageComponent } from "../components/book-details-page/book-d
     RouterModule.forRoot(routes)
     ],
     declarations:[AppComponent,
-        HomePageComponent, BooksPageComponent, HousesPageComponent, CharactersPageComponent, BookDetailsPageComponent
+        HomePageComponent,
+        BooksPageComponent,
+        HousesPageComponent,
+        CharactersPageComponent,
+        BookDetailsPageComponent,
+        CharacterDetailsPageComponent,
     ],
     providers:[
         BookService,
-    
+        CharacterService,
     provideAnimationsAsync()
   ],
     bootstrap: [AppComponent],

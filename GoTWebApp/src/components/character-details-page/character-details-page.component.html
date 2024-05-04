@@ -1,0 +1,35 @@
+<div *ngIf="character">
+    <h2>{{ character.name }}</h2>
+    <ul>
+      <li>Gender: {{ character.gender }}</li>
+      <li>Culture: {{ character.culture }}</li>
+      <li>Born: {{ character.born }}</li>
+      <li>Died: {{ character.died }}</li>
+      <li>Titles: {{ character.titles.join(', ') }}</li>
+      <li>Aliases: {{ character.aliases.join(', ') }}</li>
+      <li>Father: {{ character.father }}</li>
+      <li>Mother: {{ character.mother }}</li>
+      <li>Spouse: {{ character.spouse }}</li>
+      <li>Allegiances: {{ character.allegiances.join(', ') }}</li>
+    </ul>
+    <h3>Books</h3>
+    <ul>
+      <li *ngFor="let book of character.books">{{ book }}</li>
+    </ul>
+    <h3>POV Books</h3>
+    <ul>
+      <li *ngFor="let book of character.povBooks">{{ book }}</li>
+    </ul>
+    <h3>TV Series</h3>
+    <ul>
+      <li *ngFor="let series of character.tvSeries">{{ series }}</li>
+    </ul>
+    <h3>Played By</h3>
+    <ul>
+      <li *ngFor="let actor of character.playedBy">{{ actor }}</li>
+    </ul>
+  </div>
+  <div *ngIf="!character">
+    <p>No character details available</p>
+  </div>
+  
