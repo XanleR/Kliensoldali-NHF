@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { BookDetailsPageComponent } from "../components/book-details-page/book-details-page.component";
 import { CharacterService } from "../services/character.service";
 import { CharacterDetailsPageComponent } from "../components/character-details-page/character-details-page.component";
+import { HouseDetailsPageComponent } from "../components/house-details-page/house-details-page.component";
+import { HouseService } from "../services/house.service";
 
 @NgModule({
     imports:[
@@ -29,10 +31,12 @@ import { CharacterDetailsPageComponent } from "../components/character-details-p
         CharactersPageComponent,
         BookDetailsPageComponent,
         CharacterDetailsPageComponent,
+        HouseDetailsPageComponent,
     ],
     providers:[
         BookService,
         CharacterService,
+        HouseService,
     provideAnimationsAsync()
   ],
     bootstrap: [AppComponent],

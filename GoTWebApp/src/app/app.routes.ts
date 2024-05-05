@@ -5,12 +5,14 @@ import { HousesPageComponent } from '../components/houses-page/houses-page.compo
 import { CharactersPageComponent } from '../components/characters-page/characters-page.component';
 import { BookDetailsPageComponent } from '../components/book-details-page/book-details-page.component';
 import { CharacterDetailsPageComponent } from '../components/character-details-page/character-details-page.component';
+import { HouseDetailsPageComponent } from '../components/house-details-page/house-details-page.component';
 
 export const routes: Routes = [
     {path: '', component: HomePageComponent},
     {path: 'books', component: BooksPageComponent},
     {path: 'books/:id', component: BookDetailsPageComponent},
     {path: 'houses', component: HousesPageComponent},
+    {path: 'houses/:id', component: HouseDetailsPageComponent},
     {path: 'characters', component: CharactersPageComponent},
     {path: 'characters/:id', component: CharacterDetailsPageComponent},
     {path: '**', component: HomePageComponent}

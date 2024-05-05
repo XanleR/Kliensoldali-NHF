@@ -1,1 +1,20 @@
-<p>houses-page works!</p>
+<div *ngIf="houses && houses.length > 0">
+    <h2>Houses of the Song of Ice and Fire universe</h2>
+    <ul>
+      <li *ngFor="let house of houses" (click)="goToHousesDetailsPage(house.url)">
+        {{ house.name }}
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="!houses || houses.length === 0">
+    <p>No character available</p>
+  </div>
+
+  <div class="pagination">
+    <button mat-icon-button (click)="previousPage()" [disabled]="currentPage === 1">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button mat-icon-button (click)="nextPage()" [disabled]="isNextLastPage">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>

@@ -6,7 +6,7 @@ export interface House{
     words: string;
     titles: string[];
     seats: string[];
-    currentLord: string[];
+    currentLord: string;
     heir: string;
     overlord: string;
     founded: string;

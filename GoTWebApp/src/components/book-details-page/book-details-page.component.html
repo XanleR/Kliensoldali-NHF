@@ -1,28 +1,42 @@
 <div *ngIf="book">
-    <h2>{{ book.name }}</h2>
-    <ul>
-      <li>ISBN: {{ book.isbn }}</li>
-      <li>Authors: {{ book.authors.join(', ') }}</li>
-      <li>Number of Pages: {{ book.numberOfPages }}</li>
-      <li>Publisher: {{ book.publisher }}</li>
-      <li>Country: {{ book.country }}</li>
-      <li>Media Type: {{ book.mediaType }}</li>
-      <li>Released: {{ book.released }}</li>
-    </ul>
-    <h3>Characters</h3>
-    <ul>
-      <ng-container *ngFor="let characterUrl of book.characters">
-        <li *ngIf="characters[characterUrl]">{{ characters[characterUrl].name }}</li>
-      </ng-container>
-    </ul>
-    <h3>POV Characters</h3>
-    <ul>
-      <ng-container *ngFor="let characterUrl of book.povCharacters">
-        <li *ngIf="characters[characterUrl]">{{ characters[characterUrl].name }}</li>
-      </ng-container>
-    </ul>
+  <h2>{{ book.name }}</h2>
+  <ul>
+    <li>ISBN: {{ book.isbn }}</li>
+    <li>Authors: {{ book.authors.join(', ') }}</li>
+    <li>Number of Pages: {{ book.numberOfPages }}</li>
+    <li>Publisher: {{ book.publisher }}</li>
+    <li>Country: {{ book.country }}</li>
+    <li>Media Type: {{ book.mediaType }}</li>
+    <li>Released: {{ book.released }}</li>
+  </ul>
+  <h3>Characters</h3>
+  <ul>
+    <ng-container *ngFor="let characterUrl of book.characters">
+      <li *ngIf="characters[characterUrl]" (click)="goToCharactersDetailsPage(characterUrl)">
+        {{ characters[characterUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
+  <div class="pagination">
+    <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+    <span>{{ currentPage }}</span> / <span>{{ totalPages }}</span>
+    <button [disabled]="currentPage * pageSize >= book.characters.length" (click)="nextPage()">Next</button>
   </div>
-  <div *ngIf="!book">
-    <p>No book details available</p>
+
+  <h3>POV Characters</h3>
+  <ul>
+    <ng-container *ngFor="let characterUrl of book.povCharacters">
+      <li *ngIf="povCharacters[characterUrl]" (click)="goToCharactersDetailsPage(characterUrl)">
+        {{ povCharacters[characterUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
+  <div class="pagination">
+    <button [disabled]="povCurrentPage === 1" (click)="povPreviousPage()">Previous</button>
+    <span>{{ povCurrentPage }}</span> / <span>{{ povTotalPages }}</span>
+    <button [disabled]="povCurrentPage  === povTotalPages" (click)="povNextPage()">Next</button>
   </div>
-  
+</div>
+<div *ngIf="!book">
+  <p>No book details available</p>
+</div>

@@ -7,18 +7,33 @@
       <li>Died: {{ character.died }}</li>
       <li>Titles: {{ character.titles.join(', ') }}</li>
       <li>Aliases: {{ character.aliases.join(', ') }}</li>
-      <li>Father: {{ character.father }}</li>
-      <li>Mother: {{ character.mother }}</li>
-      <li>Spouse: {{ character.spouse }}</li>
-      <li>Allegiances: {{ character.allegiances.join(', ') }}</li>
+      <li>Father: {{ fatherName }}</li>
+      <li>Mother: {{ motherName }}</li>
+      <li>Spouse: {{ spouseName }}</li>
+    </ul>
+    <h3>Allegiances</h3>
+    <ul>
+      <ng-container *ngFor="let houseUrl of character.allegiances">
+        <li *ngIf="allegiances[houseUrl]" (click)="goToHouseDetailsPage(houseUrl)">
+          {{ allegiances[houseUrl].name }}
+        </li>
+      </ng-container>
     </ul>
     <h3>Books</h3>
     <ul>
-      <li *ngFor="let book of character.books">{{ book }}</li>
+      <ng-container *ngFor="let bookUrl of character.books">
+        <li *ngIf="books[bookUrl]" (click)="goToBooksDetailsPage(bookUrl)">
+          {{ books[bookUrl].name }}
+        </li>
+      </ng-container>
     </ul>
     <h3>POV Books</h3>
     <ul>
-      <li *ngFor="let book of character.povBooks">{{ book }}</li>
+      <ng-container *ngFor="let bookUrl of character.povBooks">
+        <li *ngIf="povBooks[bookUrl]" (click)="goToBooksDetailsPage(bookUrl)">
+          {{ povBooks[bookUrl].name }}
+        </li>
+      </ng-container>
     </ul>
     <h3>TV Series</h3>
     <ul>
