@@ -1,50 +1,56 @@
 <div *ngIf="character">
-    <h2>{{ character.name }}</h2>
-    <ul>
-      <li>Gender: {{ character.gender }}</li>
-      <li>Culture: {{ character.culture }}</li>
-      <li>Born: {{ character.born }}</li>
-      <li>Died: {{ character.died }}</li>
-      <li>Titles: {{ character.titles.join(', ') }}</li>
-      <li>Aliases: {{ character.aliases.join(', ') }}</li>
-      <li>Father: {{ fatherName }}</li>
-      <li>Mother: {{ motherName }}</li>
-      <li>Spouse: {{ spouseName }}</li>
-    </ul>
-    <h3>Allegiances</h3>
-    <ul>
-      <ng-container *ngFor="let houseUrl of character.allegiances">
-        <li *ngIf="allegiances[houseUrl]" (click)="goToHouseDetailsPage(houseUrl)">
-          {{ allegiances[houseUrl].name }}
-        </li>
-      </ng-container>
-    </ul>
-    <h3>Books</h3>
-    <ul>
-      <ng-container *ngFor="let bookUrl of character.books">
-        <li *ngIf="books[bookUrl]" (click)="goToBooksDetailsPage(bookUrl)">
-          {{ books[bookUrl].name }}
-        </li>
-      </ng-container>
-    </ul>
-    <h3>POV Books</h3>
-    <ul>
-      <ng-container *ngFor="let bookUrl of character.povBooks">
-        <li *ngIf="povBooks[bookUrl]" (click)="goToBooksDetailsPage(bookUrl)">
-          {{ povBooks[bookUrl].name }}
-        </li>
-      </ng-container>
-    </ul>
-    <h3>TV Series</h3>
-    <ul>
-      <li *ngFor="let series of character.tvSeries">{{ series }}</li>
-    </ul>
-    <h3>Played By</h3>
-    <ul>
-      <li *ngFor="let actor of character.playedBy">{{ actor }}</li>
-    </ul>
-  </div>
-  <div *ngIf="!character">
-    <p>No character details available</p>
-  </div>
-  
+  <h2>{{ character.name || character.aliases.join(', ') }}</h2>
+  <ul>
+    <li><strong>Gender:</strong> {{ character.gender }}</li>
+    <li><strong>Culture:</strong> {{ character.culture }}</li>
+    <li><strong>Born:</strong> {{ character.born }}</li>
+    <li><strong>Died:</strong> {{ character.died }}</li>
+    <li><strong>Titles:</strong> {{ character.titles.join(', ') }}</li>
+    <li><strong>Aliases:</strong> {{ character.aliases.join(', ') }}</li>
+    <li (click)="goToCharacterDetailsPage(character.father)">
+      <strong>Father:</strong> {{ fatherName }}
+    </li>
+    <li (click)="goToCharacterDetailsPage(character.mother)">
+      <strong>Mother:</strong> {{ motherName }}
+    </li>
+    <li (click)="goToCharacterDetailsPage(character.spouse)">
+      <strong>Spouse:</strong> {{ spouseName }}
+    </li>
+  </ul>
+  <h3><strong>Allegiances</strong></h3>
+  <ul>
+    <ng-container *ngFor="let houseUrl of character.allegiances">
+      <li *ngIf="allegiances[houseUrl]" (click)="goToHouseDetailsPage(houseUrl)">
+        {{ allegiances[houseUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
+  <h3><strong>Books</strong></h3>
+  <ul>
+    <ng-container *ngFor="let bookUrl of character.books">
+      <li *ngIf="books[bookUrl]" (click)="goToBooksDetailsPage(bookUrl)">
+        {{ books[bookUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
+  <h3><strong>POV Books</strong></h3>
+  <ul>
+    <ng-container *ngFor="let bookUrl of character.povBooks">
+      <li *ngIf="povBooks[bookUrl]" (click)="goToBooksDetailsPage(bookUrl)">
+        {{ povBooks[bookUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
+  <h3><strong>TV Series</strong></h3>
+  <ul>
+    <li *ngFor="let series of character.tvSeries">{{ series }}</li>
+  </ul>
+  <h3><strong>Played By</strong></h3>
+  <ul>
+    <li *ngFor="let actor of character.playedBy">{{ actor }}</li>
+  </ul>
+</div>
+
+<div *ngIf="!character">
+  <p>No character details available</p>
+</div>

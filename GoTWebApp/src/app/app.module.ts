@@ -16,12 +16,19 @@ import { CharacterService } from "../services/character.service";
 import { CharacterDetailsPageComponent } from "../components/character-details-page/character-details-page.component";
 import { HouseDetailsPageComponent } from "../components/house-details-page/house-details-page.component";
 import { HouseService } from "../services/house.service";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
     imports:[
+        MatToolbarModule,
         HttpClientModule,
         BrowserModule,
         MatIconModule,
+        MatListModule,
+        MatCardModule,
     RouterModule.forRoot(routes)
     ],
     declarations:[AppComponent,

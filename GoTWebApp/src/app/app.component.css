@@ -1,0 +1,19 @@
+.toolbar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .toolbar-title {
+    margin-right: auto; /* Pushes the title to the left */
+  }
+  
+  .spacer {
+    flex-grow: 1; /* Creates space between the title and buttons */
+  }
+
+  button:hover,
+    span:hover {
+    cursor: pointer;
+}
+
+  

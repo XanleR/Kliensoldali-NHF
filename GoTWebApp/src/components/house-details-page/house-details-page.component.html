@@ -1,43 +1,45 @@
 <div *ngIf="house">
-    <h2>{{ house.name }}</h2>
-    <ul>
-      <li>Region: {{ house.region }}</li>
-      <li>Coat of Arms: {{ house.coatOfArms }}</li>
-      <li>Words: {{ house.words }}</li>
-      <li>Titles: {{ house.titles.join(', ') }}</li>
-      <li>Seats: {{ house.seats.join(', ') }}</li>
-      <li>Current Lord: {{ currentLord }}</li>
-      <li>Heir: {{ heir }}</li>
-      <li>Overlord: {{ overlord }}</li>
-      <li>Founded: {{ house.founded }}</li>
-      <li>Founder: {{ founder }}</li>
-      <li>Died Out: {{ house.diedOut }}</li>
-      <li>Ancestral Weapons: {{ house.ancestralWeapons.join(', ') }}</li>
-    </ul>
-    <h3>Cadet Branches</h3>
-    <ul>
-      <ng-container *ngFor="let houseUrl of house.cadetBranches">
-        <li *ngIf="cadetBranches[houseUrl]" (click)="goToHouseDetailsPage(houseUrl)">
-          {{ cadetBranches[houseUrl].name }}
-        </li>
-      </ng-container>
-    </ul>
-    
-    <h3>Sworn Members</h3>
-    <ul>
-      <ng-container *ngFor="let characterUrl of house.swornMembers">
-        <li *ngIf="swornMembers[characterUrl]" (click)="goToCharactersDetailsPage(characterUrl)">
-          {{ swornMembers[characterUrl].name }}
-        </li>
-      </ng-container>
-    </ul>
-    <div class="pagination">
-      <button [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
-      <span>{{ currentPage }}</span> / <span>{{ totalPages }}</span>
-      <button [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
-    </div>
-  </div>
-  <div *ngIf="!house">
-    <p>No house details available</p>
-  </div>
+  <h2>{{ house.name }}</h2>
+  <ul>
+    <li><strong>Region:</strong> {{ house.region }}</li>
+    <li><strong>Coat of Arms:</strong> {{ house.coatOfArms }}</li>
+    <li><strong>Words:</strong> {{ house.words }}</li>
+    <li><strong>Titles:</strong> {{ house.titles.join(', ') }}</li>
+    <li><strong>Seats:</strong> {{ house.seats.join(', ') }}</li>
+    <li><strong>Current Lord:</strong> {{ currentLord }}</li>
+    <li><strong>Heir:</strong> {{ heir }}</li>
+    <li><strong>Overlord:</strong> {{ overlord }}</li>
+    <li><strong>Founded:</strong> {{ house.founded }}</li>
+    <li><strong>Founder:</strong> {{ founder }}</li>
+    <li><strong>Died Out:</strong> {{ house.diedOut }}</li>
+    <li><strong>Ancestral Weapons:</strong> {{ house.ancestralWeapons.join(', ') }}</li>
+  </ul>
+
+  <h3><strong>Cadet Branches</strong></h3>
+  <ul>
+    <ng-container *ngFor="let houseUrl of house.cadetBranches">
+      <li *ngIf="cadetBranches[houseUrl]" (click)="goToHouseDetailsPage(houseUrl)">
+        {{ cadetBranches[houseUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
   
+  <h3><strong>Sworn Members</strong></h3>
+  <ul>
+    <ng-container *ngFor="let characterUrl of house.swornMembers">
+      <li *ngIf="swornMembers[characterUrl]" (click)="goToCharactersDetailsPage(characterUrl)">
+        {{ swornMembers[characterUrl].name }}
+      </li>
+    </ng-container>
+  </ul>
+
+  <div class="pagination">
+    <button mat-raised-button color="primary" [disabled]="currentPage === 1" (click)="previousPage()">Previous</button>
+    <span>{{ currentPage }}</span> / <span>{{ totalPages }}</span>
+    <button mat-raised-button color="primary" [disabled]="currentPage === totalPages" (click)="nextPage()">Next</button>
+  </div>
+</div>
+
+<div *ngIf="!house">
+  <p>No house details available</p>
+</div>

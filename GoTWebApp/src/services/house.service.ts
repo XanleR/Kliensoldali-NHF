@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, map, of } from "rxjs";
 import { House } from "../models/house";
 
 @Injectable({
@@ -19,10 +19,33 @@ export class HouseService{
     }
 
     getHouseById(houseId: string):Observable<House>{
-        return this.http.get<House>(`${this.apiUrl}/${houseId}`);
+        return this.getHouseByUrl(`${this.apiUrl}/${houseId}`);
     }
 
     getHouseByUrl(url: string): Observable<House>{
-        return this.http.get<House>(url);
+        const tmp = this.getHouseFromLocalStorage(url);
+        if(tmp != null){
+            return of(tmp);
+        }
+        return this.http.get<House>(url).pipe(
+            map(
+              (house) => {
+                this.saveHouse(house);
+                return house;
+              }
+            )
+          );
+    }
+
+    saveHouse(house: House):void{
+        localStorage.setItem(house.url, JSON.stringify(house));
+      }
+    
+    getHouseFromLocalStorage(url: string): House | null{
+    const tmp = localStorage.getItem(url);
+    if(tmp == null){
+        return null;
+    }
+    return JSON.parse(tmp);
     }
 }

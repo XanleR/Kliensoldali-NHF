@@ -1,15 +1,15 @@
 <div *ngIf="book">
   <h2>{{ book.name }}</h2>
   <ul>
-    <li>ISBN: {{ book.isbn }}</li>
-    <li>Authors: {{ book.authors.join(', ') }}</li>
-    <li>Number of Pages: {{ book.numberOfPages }}</li>
-    <li>Publisher: {{ book.publisher }}</li>
-    <li>Country: {{ book.country }}</li>
-    <li>Media Type: {{ book.mediaType }}</li>
-    <li>Released: {{ book.released }}</li>
+    <li><strong>ISBN:</strong> {{ book.isbn }}</li>
+    <li><strong>Authors:</strong> {{ book.authors.join(', ') }}</li>
+    <li><strong>Number of Pages:</strong> {{ book.numberOfPages }}</li>
+    <li><strong>Publisher:</strong> {{ book.publisher }}</li>
+    <li><strong>Country:</strong> {{ book.country }}</li>
+    <li><strong>Media Type:</strong> {{ book.mediaType }}</li>
+    <li><strong>Released:</strong> {{ book.released }}</li>
   </ul>
-  <h3>Characters</h3>
+  <h3><strong>Characters</strong></h3>
   <ul>
     <ng-container *ngFor="let characterUrl of book.characters">
       <li *ngIf="characters[characterUrl]" (click)="goToCharactersDetailsPage(characterUrl)">
@@ -23,7 +23,7 @@
     <button [disabled]="currentPage * pageSize >= book.characters.length" (click)="nextPage()">Next</button>
   </div>
 
-  <h3>POV Characters</h3>
+  <h3><strong>POV Characters</strong></h3>
   <ul>
     <ng-container *ngFor="let characterUrl of book.povCharacters">
       <li *ngIf="povCharacters[characterUrl]" (click)="goToCharactersDetailsPage(characterUrl)">

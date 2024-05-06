@@ -1,8 +1,22 @@
-<div class="navbar">
-  Game Of Thrones
-  <button mat-button routerLink="/">Home</button>
-  <button mat-button routerLink="/books">Books</button>
-  <button mat-button routerLink="/houses">Houses</button>
-  <button mat-button routerLink="/characters">Characters</button>
-</div>
+<mat-toolbar color="primary" class="toolbar">
+  <span class="toolbar-title" routerLink="/">Game Of Thrones</span>
+  <span class="spacer"></span>
+  <button mat-icon-button routerLink="/">
+    <mat-icon>home</mat-icon>
+    Home
+  </button>
+  <button mat-icon-button routerLink="/books">
+    <mat-icon>menu_book</mat-icon>
+    Books
+  </button>
+  <button mat-icon-button routerLink="/houses">
+    <mat-icon>home_work</mat-icon>
+    Houses
+  </button>
+  <button mat-icon-button routerLink="/characters">
+    <mat-icon>people</mat-icon>
+    Characters
+  </button>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

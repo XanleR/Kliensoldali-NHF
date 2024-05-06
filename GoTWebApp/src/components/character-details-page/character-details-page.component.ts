@@ -132,4 +132,12 @@ export class CharacterDetailsPageComponent {
       this.router.navigate(['/houses', houseId]);
     }
   }
+
+  goToCharacterDetailsPage(characterUrl: string): void{
+    console.log(characterUrl);
+    const characterId = characterUrl.split('/').pop();
+    if(characterId){
+      this.router.navigate(['/characters', characterId]);
+    }
+  }
 }
